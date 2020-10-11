@@ -32,7 +32,10 @@ function makeArray() {
 function makeHoles() {
   holes = []
   for (let i = 0; i < 100; i++) {
-    holes[i] = Math.random() * c.height - 200
+    holes[i] = Math.random() * c.height - 200;
+    if ( holes[i] < -150 ) {
+      holes[i] += 100;
+    }
   }
 }
 collided = false;
@@ -51,11 +54,11 @@ tick = -1000;
 function drawPipes() {
   tick = tick + 1 + Math.abs(tick / 3000);
   for (let i = 0; i < 100; i++) {
-    ctx.fillStyle = "darkgreen"
+    ctx.fillStyle = "darkgreen";
     ctx.fillRect(pipes[i] - tick, 0, 50, c.height);
   }
   for (let i = 0; i < 100; i++) {
-    ctx.fillStyle = "lightblue"
+    ctx.fillStyle = "lightblue";
     ctx.fillRect(pipes[i] - tick - 1, holes[i], 52, 200)
   }
 }
