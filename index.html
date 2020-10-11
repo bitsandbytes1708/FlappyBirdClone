@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <canvas id="canvas" width="700" height="400"></canvas>
-    <script src="script.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Open-source Flappy Bird</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<style>
+  canvas {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+
+  .playagain {
+    position: absolute;
+    top: 65%;
+    left: 42%;
+    background-color: #66b9d4;
+    font-size: 40px;
+    border-radius: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+</style>
+
+
+<body>
+  <canvas id="canvas" width="700" height="400" style="border:1px solid #000000" ;></canvas>
+  <script src=" script.js"></script><br>
+  <button id="playagain" class="playagain" onclick="clickPlayagain()">Play again!</button>
+</body>
+
 </html>
