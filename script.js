@@ -15,7 +15,7 @@ function drawGrass() {
 }
 function bounce() {
   if (y > c.height - 45) {
-    velocity = -4
+    velocity = -(Math.abs((velocity/3)*2))
     console.log("test")
   }
 }
