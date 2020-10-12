@@ -3,6 +3,10 @@ let ctx = c.getContext("2d");
 let score;
 let widthOfGrass = c.width / 40;
 
+function drawStartScreen() {
+  clear();
+  drawGrass();
+}
 function drawGrass() {
   for (let i = 0; i < 40; i++) {
     if (i % 2 == 0) {
@@ -96,6 +100,7 @@ function lose() {
       ctx.fillText("You Lost", c.width / 2, c.height / 3);
       ctx.fillText("Your score was: " + score, c.width / 2, c.height / 3 + 70);
     }
+    playagain.style.display = "inline-block";
   }
 }
 
@@ -117,11 +122,14 @@ function gameloop() {
     lose();
   }
 }
-gameloop();
+function clickStart() {
+  start.style.display = "none";
+  gameloop();
+}
+drawStartScreen();
 
 // click to fly function
 window.addEventListener("click", flyFunction);
 function flyFunction() {
   velocity = -3;
 }
-
