@@ -131,13 +131,14 @@ function gameloop() {
 
 function saveHighScore()
 {
-	 if(highScore !== null){
-				if (score > highScore) {
+	 if(highScore !== null) {
+				if (score >= highScore) {
 					localStorage.setItem("highScore", score);      
 				}
-			}else{
+			} else{
+        highScore = score;
 				localStorage.setItem("highScore", score);
-			}
+	  }
 }
 function clickStart() {
   start.style.display = "none";
