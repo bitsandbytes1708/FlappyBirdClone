@@ -2,6 +2,7 @@ let c = document.getElementById("canvas");
 let ctx = c.getContext("2d");
 let score;
 let widthOfGrass = c.width / 40;
+let highScore = localStorage.getItem("highScore");
 
 function drawStartScreen() {
   clear();
@@ -93,12 +94,16 @@ function lose() {
     const bg_image = new Image();
     bg_image.src = "https://image.freepik.com/free-vector/sunburst-spiral-wallpaper_1284-3501.jpg"; //This picture is free for use, not Copyright needed
     bg_image.onload = function () {
+			
       ctx.drawImage(bg_image, 0, 0, c.width, c.height);
       ctx.font = "30px Verdana";
       ctx.fillStyle = "black"
       ctx.textAlign = "center";
       ctx.fillText("You Lost", c.width / 2, c.height / 3);
       ctx.fillText("Your score was: " + score, c.width / 2, c.height / 3 + 70);
+	  ctx.fillText("Your highscore is: " + highScore, c.width / 2, c.height / 2 + 90);
+	 
+		
     }
     playagain.style.display = "inline-block";
   }
@@ -119,8 +124,20 @@ function gameloop() {
     drawGrass();
     requestAnimationFrame(gameloop)
   } else {
+	saveHighScore();
     lose();
   }
+}
+
+function saveHighScore()
+{
+	 if(highScore !== null){
+				if (score > highScore) {
+					localStorage.setItem("highScore", score);      
+				}
+			}else{
+				localStorage.setItem("highScore", score);
+			}
 }
 function clickStart() {
   start.style.display = "none";
