@@ -1,6 +1,6 @@
 let c = document.getElementById("canvas");
 let ctx = c.getContext("2d");
-let score;
+let score = 0;
 let widthOfGrass = c.width / 40;
 let highScore = localStorage.getItem("highScore");
 
@@ -46,7 +46,8 @@ function makeHoles() {
 collided = false;
 function collisionDetection() {
   for (let i = 0; i < 100; i++) {
-    if (pipes[i] - tick < 60 && pipes[i] - tick > -20) {
+    if(pipes[i]-tick<60&&pipes[i]-tick>-20) {
+      score = i + 1;
       if (!(y > holes[i] + 20 && y < holes[i] + 180)) {
         collided = true;
         score = i;
@@ -81,6 +82,12 @@ velocity = -2
 function updatePosition() {
   y += velocity
   velocity += .1
+}
+
+function drawScore () {
+  ctx.font='32px serif';
+  ctx.fillStyle = "red"
+  ctx.fillText(`Score: ${score}`, c.width - 150, 30);
 }
 
 function clear() {
@@ -122,6 +129,7 @@ function gameloop() {
     drawPipes();
     drawFlappy();
     drawGrass();
+    drawScore();
     requestAnimationFrame(gameloop)
   } else {
 	saveHighScore();
