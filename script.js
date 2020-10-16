@@ -1,7 +1,11 @@
 let c = document.getElementById("canvas");
 let ctx = c.getContext("2d");
 let score = 0;
-let widthOfGrass = c.width / 40;
+let widthOfGrass = c.width/40;
+const jump = new Audio('jump.wav');
+jump.volume = 0.2;
+const explode = new Audio('explode.wav');
+explode.volume = 0.1;
 
 function drawGrass() {
   for (let i = 0; i < 40; i++) {
@@ -93,6 +97,7 @@ function clear() {
 function lose() {
   //run background, write text on top
   if (collided == true) {
+    explode.play();  
     const bg_image = new Image();
     bg_image.src = "https://image.freepik.com/free-vector/sunburst-spiral-wallpaper_1284-3501.jpg"; //This picture is free for use, not Copyright needed
     bg_image.onload = function () {
@@ -130,6 +135,7 @@ gameloop();
 // click to fly function
 window.addEventListener("click", flyFunction);
 function flyFunction() {
-  velocity = -3;
+    velocity=-3;
+    jump.play();
 }
 
