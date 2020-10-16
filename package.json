@@ -1,0 +1,13 @@
+{
+	"name": "FlappyBirdClone",
+	"version": "1.0.0",
+	"main": "script.js",
+	"repository": "https://github.com/bitsandbytes1708/FlappyBirdClone",
+	"license": "MIT",
+	"scripts": {
+		"start": "live-server"
+	},
+	"devDependencies": {
+		"live-server": "^1.2.1"
+	}
+}
