@@ -1,12 +1,17 @@
 let c = document.getElementById("canvas");
 let ctx = c.getContext("2d");
 let score = 0;
-let widthOfGrass = c.width/40;
 const jump = new Audio('jump.wav');
 jump.volume = 0.2;
 const explode = new Audio('explode.wav');
 explode.volume = 0.1;
+let widthOfGrass = c.width / 40;
+let highScore = localStorage.getItem("highScore");
 
+function drawStartScreen() {
+  clear();
+  drawGrass();
+}
 function drawGrass() {
   for (let i = 0; i < 40; i++) {
     if (i % 2 == 0) {
@@ -19,7 +24,7 @@ function drawGrass() {
 }
 function bounce() {
   if (y > c.height - 45) {
-    velocity = -4
+    velocity = -(Math.abs((velocity/3)*2))
     console.log("test")
   }
 }
@@ -101,13 +106,18 @@ function lose() {
     const bg_image = new Image();
     bg_image.src = "https://image.freepik.com/free-vector/sunburst-spiral-wallpaper_1284-3501.jpg"; //This picture is free for use, not Copyright needed
     bg_image.onload = function () {
+			
       ctx.drawImage(bg_image, 0, 0, c.width, c.height);
       ctx.font = "30px Verdana";
       ctx.fillStyle = "black"
       ctx.textAlign = "center";
       ctx.fillText("You Lost", c.width / 2, c.height / 3);
       ctx.fillText("Your score was: " + score, c.width / 2, c.height / 3 + 70);
+	  ctx.fillText("Your highscore is: " + highScore, c.width / 2, c.height / 2 + 90);
+	 
+		
     }
+    playagain.style.display = "inline-block";
   }
 }
 
@@ -127,10 +137,27 @@ function gameloop() {
     drawScore();
     requestAnimationFrame(gameloop)
   } else {
+	saveHighScore();
     lose();
   }
 }
-gameloop();
+
+function saveHighScore()
+{
+	 if(highScore !== null) {
+				if (score >= highScore) {
+					localStorage.setItem("highScore", score);      
+				}
+			} else{
+        highScore = score;
+				localStorage.setItem("highScore", score);
+	  }
+}
+function clickStart() {
+  start.style.display = "none";
+  gameloop();
+}
+drawStartScreen();
 
 // click to fly function
 window.addEventListener("click", flyFunction);
@@ -138,4 +165,3 @@ function flyFunction() {
     velocity=-3;
     jump.play();
 }
-

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -11,20 +12,30 @@
 <style>
   canvas {
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 0;
   }
-
+  .start {
+    position: absolute;
+    top: 35%;
+    left: 45%;
+    background-color: green;
+    font-size: 40px;
+    border-radius: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+  }
   .playagain {
     position: absolute;
-    top: 65%;
+    top: 75%;
     left: 42%;
     background-color: #66b9d4;
     font-size: 40px;
     border-radius: 8px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: none;
   }
 </style>
 
@@ -32,6 +43,7 @@
 <body>
   <canvas id="canvas" width="700" height="400" style="border:1px solid #000000" ;></canvas>
   <script src=" script.js"></script><br>
+  <button id="start" class = "start" onclick="clickStart()">Start!</button>
   <button id="playagain" class="playagain" onclick="clickPlayagain()">Play again!</button>
 </body>
 
