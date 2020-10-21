@@ -20,6 +20,6 @@ In the project directory, you can run:
 Runs the app in development mode, automatically reloading if you make edits.
 Will automatically open the app on [http://localhost:8080](http://localhost:8080).
 
-# REPL.it
+# Github Pages
 
-There is a repl for this if you want to play it live in your browser at https://flappybird.gwood5901.repl.co/
+There is Github Pages website set up for this repo here - https://bitsandbytes1708.github.io/FlappyBirdClone/
