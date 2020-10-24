@@ -1,50 +1,21 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Open-source Flappy Bird</title>
+  <title>Flappy Bird Clone</title>
+  <!-- added flappy bird logo icon to title bar --> 
+  <link rel="icon" href="https://cdn6.aptoide.com/imgs/7/5/d/75d95aa7dcd35d2fa40114fbae8bb519_icon.png" type="image/icon type">
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<style>
-  canvas {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-  }
-  .start {
-    position: absolute;
-    top: 35%;
-    left: 45%;
-    background-color: green;
-    font-size: 40px;
-    border-radius: 8px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
-  }
-  .playagain {
-    position: absolute;
-    top: 75%;
-    left: 42%;
-    background-color: #66b9d4;
-    font-size: 40px;
-    border-radius: 8px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display: none;
-  }
-</style>
-
-
 <body>
-  <canvas id="canvas" width="700" height="400" style="border:1px solid #000000" ;></canvas>
-  <script src=" script.js"></script><br>
+  <canvas id="canvas" width="700" height="400" style="border:1px solid #000000";></canvas>
   <button id="start" class = "start" onclick="clickStart()">Start!</button>
-  <button id="playagain" class="playagain" onclick="clickPlayagain()">Play again!</button>
+  <button id="playagain" class="playagain" onclick="clickPlayagain()">New Game</button>
+
+  <script src="script.js"></script><br>
 </body>
 
 </html>

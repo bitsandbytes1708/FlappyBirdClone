@@ -10,7 +10,7 @@ let highScore = localStorage.getItem("highScore");
 
 function drawStartScreen() {
   clear();
-  drawGrass();
+  // drawGrass();
 }
 function drawGrass() {
   for (let i = 0; i < 40; i++) {
@@ -23,7 +23,7 @@ function drawGrass() {
   }
 }
 function bounce() {
-  if (y > c.height - 45) {
+  if (y > c.height - 20) {  // changed height from - 45 to - 20
     velocity = -(Math.abs((velocity/3)*2))
     console.log("test")
   }
@@ -90,32 +90,41 @@ function updatePosition() {
 
 function drawScore () {
   ctx.font='32px serif';
-  ctx.fillStyle = "red"
+  ctx.fillStyle = "yellow"; // changed score font color
   ctx.fillText(`Score: ${score}`, c.width - 150, 30);
 }
 
 function clear() {
-  ctx.fillStyle = "lightblue"
-  ctx.fillRect(0, 0, c.width, c.height);
+   const game_bg = new Image();
+   game_bg.src= "http://getwallpapers.com/wallpaper/full/c/5/5/122134.jpg";
+ 
+   game_bg.onload = function () {
+     ctx.drawImage(game_bg, 0, 0, c.width, c.height);
+     ctx.fillStyle(game_bg, 0, 0, c.width, c.height);
+     ctx.fillRect(0, 0, c.width, c.height);
+  }
+  // ctx.fillStyle = "lightblue"
+  // ctx.fillRect(0, 0, c.width, c.height);
 }
 
 function lose() {
-  //run background, write text on top
+
   if (collided == true) {
     explode.play();  
     const bg_image = new Image();
-    bg_image.src = "https://image.freepik.com/free-vector/sunburst-spiral-wallpaper_1284-3501.jpg"; //This picture is free for use, not Copyright needed
+    bg_image.src = "http://getwallpapers.com/wallpaper/full/c/5/5/122134.jpg";
+    // bg_image.src = "https://image.freepik.com/free-vector/sunburst-spiral-wallpaper_1284-3501.jpg"; //This picture is free for use, not Copyright needed
     bg_image.onload = function () {
 			
       ctx.drawImage(bg_image, 0, 0, c.width, c.height);
       ctx.font = "30px Verdana";
-      ctx.fillStyle = "black"
-      ctx.textAlign = "center";
-      ctx.fillText("You Lost", c.width / 2, c.height / 3);
-      ctx.fillText("Your score was: " + score, c.width / 2, c.height / 3 + 70);
-	  ctx.fillText("Your highscore is: " + highScore, c.width / 2, c.height / 2 + 90);
+      ctx.fillStyle = "white"; // changed font color
+      ctx.textAlign = "center"; 
+      // changed positioning of scoreboard titles 
+      ctx.fillText("Game Over", c.width / 2, c.height / 4); 
+      ctx.fillText("Your score was: " + score, c.width / 2, c.height / 4 + 70); 
+	    ctx.fillText("Your highscore is: " + highScore, c.width / 2, c.height / 3 + 90);
 	 
-		
     }
     playagain.style.display = "inline-block";
   }
@@ -126,14 +135,14 @@ function clickPlayagain() {
   document.location.reload()
 }
 function gameloop() {
-  if (collided == false) { // WIP
+  if (collided == false) { 
     clear();
     updatePosition();
     bounce();
     collisionDetection();
     drawPipes();
     drawFlappy();
-    drawGrass();
+    // drawGrass();
     drawScore();
     requestAnimationFrame(gameloop)
   } else {
@@ -159,7 +168,6 @@ function clickStart() {
 }
 drawStartScreen();
 
-// click to fly function
 window.addEventListener("click", flyFunction);
 function flyFunction() {
     velocity=-3;

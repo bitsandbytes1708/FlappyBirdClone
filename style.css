@@ -1,0 +1,31 @@
+
+  canvas {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+  .start {
+    position: absolute;
+    top: 35%;
+    left: 45%;
+    background-color: green;
+    opacity: 0.8; 
+    font-size: 40px;
+    border-radius: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+  }
+  .playagain {
+    position: absolute;
+    top: 52%; /* changed position of button */
+    left: 42%;
+    background-color: #66b9d4; /* changed button color*/
+    opacity: 0.8; /* added see-thru effect */
+    font-size: 40px; 
+    border-radius: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: none;
+    color: yellow; /* changed font color */
+  }
