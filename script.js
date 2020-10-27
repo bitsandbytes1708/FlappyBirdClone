@@ -169,7 +169,9 @@ function clickStart() {
 }
 drawStartScreen();
 
-window.addEventListener("click", flyFunction);
+// click to fly function
+window.addEventListener("keyup", flyFunction);
+
 function flyFunction() {
     velocity=-3;
     jump.play();
