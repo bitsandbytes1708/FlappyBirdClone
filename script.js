@@ -68,8 +68,8 @@ function drawPipes() {
     ctx.fillRect(pipes[i] - tick, 0, 50, c.height);
   }
   for (let i = 0; i < 100; i++) {
-    ctx.fillStyle = "lightblue";
-    ctx.fillRect(pipes[i] - tick - 1, holes[i], 52, 200)
+    ctx.fillStyle = "#ADD8E6"; // added hex color code for later transparency
+    ctx.fillRect(pipes[i] - tick - 1, holes[i], 52, 200);
   }
 }
 makeArray();
@@ -96,7 +96,7 @@ function drawScore () {
 
 function clear() {
    const game_bg = new Image();
-   game_bg.src= "http://getwallpapers.com/wallpaper/full/c/5/5/122134.jpg";
+   game_bg.src= "bgimage.jpg";
  
    game_bg.onload = function () {
      ctx.drawImage(game_bg, 0, 0, c.width, c.height);
@@ -112,18 +112,19 @@ function lose() {
   if (collided == true) {
     explode.play();  
     const bg_image = new Image();
-    bg_image.src = "http://getwallpapers.com/wallpaper/full/c/5/5/122134.jpg";
+    bg_image.src = "bgimage.jpg";
     // bg_image.src = "https://image.freepik.com/free-vector/sunburst-spiral-wallpaper_1284-3501.jpg"; //This picture is free for use, not Copyright needed
     bg_image.onload = function () {
 			
       ctx.drawImage(bg_image, 0, 0, c.width, c.height);
       ctx.font = "30px Verdana";
-      ctx.fillStyle = "white"; // changed font color
+      ctx.fillStyle = "yellow"; // changed font color
       ctx.textAlign = "center"; 
       // changed positioning of scoreboard titles 
       ctx.fillText("Game Over", c.width / 2, c.height / 4); 
-      ctx.fillText("Your score was: " + score, c.width / 2, c.height / 4 + 70); 
-	    ctx.fillText("Your highscore is: " + highScore, c.width / 2, c.height / 3 + 90);
+      ctx.fillStyle = "white"; // changed font color
+      ctx.fillText("Your Score: " + score, c.width / 2, c.height / 4 + 70); 
+	    ctx.fillText("High Score: " + highScore, c.width / 2, c.height / 3 + 90);
 	 
     }
     playagain.style.display = "inline-block";
